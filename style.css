@@ -1,4 +1,7 @@
-/* ========= RESET ========= */
+/* ===========================================================
+   MANUAL DOS PADRINHOS
+   Adriel & Fernanda
+=========================================================== */
 
 *{
 margin:0;
@@ -12,19 +15,23 @@ scroll-behavior:smooth;
 
 body{
 
+background:#f6f3ee;
+
 font-family:'Inter',sans-serif;
 
-background:#f7f4ef;
-
-color:#333;
+color:#3d3d3d;
 
 overflow-x:hidden;
 
+line-height:1.7;
+
 }
 
-/* ========= FUNDO ========= */
+/* =================== FUNDO =================== */
 
-.background{
+body::before{
+
+content:"";
 
 position:fixed;
 
@@ -37,88 +44,148 @@ width:100%;
 height:100%;
 
 background:
-linear-gradient(rgba(255,255,255,.82),rgba(255,255,255,.82)),
-url("assets/img/eucalipto.png");
+
+linear-gradient(
+
+rgba(255,255,255,.92),
+
+rgba(255,255,255,.92)
+
+),
+
+url("assets/img/paper.jpg");
 
 background-size:cover;
 
 background-position:center;
 
-z-index:-2;
+z-index:-10;
 
 }
 
-/* ========= CAPA ========= */
+/* =================== HERO =================== */
 
 .hero{
 
-height:100vh;
+min-height:100vh;
 
 display:flex;
 
-justify-content:center;
-
 align-items:center;
 
-padding:30px;
+justify-content:center;
+
+padding:70px 25px;
 
 }
 
-.hero-card{
-
-max-width:720px;
+.paper{
 
 width:100%;
 
+max-width:950px;
+
+}
+
+.cover{
+
 background:white;
 
-border-radius:26px;
+border-radius:28px;
 
-padding:70px;
+padding:90px 70px;
 
 box-shadow:
 
-0 25px 70px rgba(0,0,0,.12);
-
-text-align:center;
+0 25px 80px rgba(0,0,0,.10);
 
 position:relative;
 
+overflow:hidden;
+
+border:1px solid rgba(198,177,132,.30);
+
 }
 
-.manual{
+/* =================== DECORAÇÃO =================== */
 
-letter-spacing:5px;
+.cover::before{
+
+content:"";
+
+position:absolute;
+
+width:260px;
+
+height:260px;
+
+top:-130px;
+
+left:-130px;
+
+border-radius:50%;
+
+background:rgba(125,145,98,.05);
+
+}
+
+.cover::after{
+
+content:"";
+
+position:absolute;
+
+width:320px;
+
+height:320px;
+
+bottom:-170px;
+
+right:-170px;
+
+border-radius:50%;
+
+background:rgba(196,176,120,.06);
+
+}
+
+/* =================== TÍTULOS =================== */
+
+.small-title{
+
+font-size:.95rem;
+
+letter-spacing:6px;
 
 text-transform:uppercase;
 
-font-size:.9rem;
+color:#888;
 
-color:#7c7c7c;
+margin-bottom:25px;
 
-display:block;
-
-margin-bottom:30px;
+text-align:center;
 
 }
 
-.hero h1{
+.cover h1{
 
 font-family:'Cormorant Garamond',serif;
 
-font-size:4.5rem;
+font-size:5rem;
 
 font-weight:600;
 
-line-height:1.1;
+text-align:center;
 
-color:#2b2b2b;
+color:#2c2c2c;
+
+line-height:1.05;
 
 }
 
-.hero h1 span{
+.cover h1 span{
 
-color:#8b9b72;
+color:#7a8c61;
 
 }
 
@@ -126,35 +193,61 @@ color:#8b9b72;
 
 margin-top:20px;
 
-font-size:1.1rem;
+text-align:center;
 
-letter-spacing:2px;
-
-}
-
-.phrase{
-
-margin-top:40px;
+letter-spacing:4px;
 
 font-size:1.1rem;
-
-line-height:1.8;
 
 color:#666;
 
 }
 
-button{
+.divider{
 
-margin-top:45px;
+width:90px;
 
-padding:18px 42px;
+height:2px;
 
-border:none;
+background:#c8aa72;
+
+margin:40px auto;
 
 border-radius:50px;
 
-background:#8b9b72;
+}
+
+.hero-text{
+
+max-width:620px;
+
+margin:auto;
+
+text-align:center;
+
+font-size:1.15rem;
+
+line-height:2;
+
+color:#666;
+
+}
+
+/* =================== BOTÃO =================== */
+
+#openBook{
+
+margin:55px auto 0;
+
+display:block;
+
+padding:18px 45px;
+
+border:none;
+
+border-radius:999px;
+
+background:#7b8c62;
 
 color:white;
 
@@ -164,49 +257,143 @@ cursor:pointer;
 
 transition:.35s;
 
-}
-
-button:hover{
-
-transform:translateY(-3px);
-
-background:#74855f;
+font-weight:500;
 
 }
 
-/* ========= MANUAL ========= */
+#openBook:hover{
 
-#manual{
+transform:translateY(-4px);
 
-max-width:1100px;
+box-shadow:0 12px 25px rgba(0,0,0,.15);
 
-margin:auto;
+background:#6c7e55;
 
-padding:80px 20px;
+/* ===========================================================
+   CONTADOR
+=========================================================== */
+
+#countdown{
+
+display:grid;
+
+grid-template-columns:repeat(4,1fr);
+
+gap:25px;
+
+margin-top:55px;
+
+margin-bottom:50px;
 
 }
 
-.page{
+#countdown div{
 
-margin:80px 0;
+background:#faf9f6;
 
-}
+padding:35px 20px;
 
-.page-content{
+border-radius:20px;
 
-background:white;
+text-align:center;
 
-border-radius:24px;
-
-padding:60px;
+border:1px solid rgba(205,195,170,.40);
 
 box-shadow:
 
-0 15px 45px rgba(0,0,0,.08);
+0 10px 30px rgba(0,0,0,.05);
+
+transition:.35s;
 
 }
 
-.page h2{
+#countdown div:hover{
+
+transform:translateY(-6px);
+
+}
+
+#countdown span{
+
+display:block;
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:3.5rem;
+
+font-weight:700;
+
+color:#6f8160;
+
+}
+
+#countdown small{
+
+display:block;
+
+margin-top:10px;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+font-size:.8rem;
+
+color:#888;
+
+}
+
+/* ===========================================================
+   MENSAGEM FINAL
+=========================================================== */
+
+.final-message{
+
+margin:120px auto;
+
+max-width:900px;
+
+padding:0 20px;
+
+}
+
+.final-card{
+
+background:white;
+
+padding:80px 60px;
+
+border-radius:28px;
+
+text-align:center;
+
+box-shadow:
+
+0 20px 60px rgba(0,0,0,.08);
+
+border:1px solid rgba(210,198,170,.40);
+
+}
+
+.monogram-final{
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:70px;
+
+margin-bottom:30px;
+
+color:#6f8160;
+
+}
+
+.monogram-final span{
+
+color:#c7a96d;
+
+}
+
+.final-card h2{
 
 font-family:'Cormorant Garamond',serif;
 
@@ -214,143 +401,123 @@ font-size:3rem;
 
 margin-bottom:30px;
 
-color:#2b2b2b;
+}
+
+.final-card p{
+
+line-height:2;
+
+font-size:1.05rem;
+
+color:#666;
 
 }
 
-.page p{
-
-font-size:1.1rem;
-
-line-height:1.9;
-
-}
-
-/* ========= DRESS ========= */
-
-.dress-grid{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:40px;
+.signature{
 
 margin-top:50px;
 
 }
 
-.dress-card{
-
-text-align:center;
-
-}
-
-.dress-card img{
-
-width:100%;
-
-border-radius:18px;
-
-box-shadow:0 15px 35px rgba(0,0,0,.12);
-
-}
-
-.dress-card h3{
-
-margin-top:20px;
-
-font-size:1.6rem;
+.signature h3{
 
 font-family:'Cormorant Garamond',serif;
 
-}
+font-size:2rem;
 
-/* ========= INFO ========= */
-
-.info{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:25px;
-
-margin:40px 0;
+color:#6f8160;
 
 }
 
-.info div{
-
-background:#fafafa;
-
-padding:25px;
-
-border-radius:16px;
-
-}
-
-.maps{
-
-display:inline-block;
-
-padding:16px 34px;
-
-background:#8b9b72;
-
-color:white;
-
-text-decoration:none;
-
-border-radius:40px;
-
-}
-
-/* ========= CONTADOR ========= */
-
-#contador{
-
-font-size:3rem;
-
-font-weight:700;
-
-margin:30px 0;
-
-color:#8b9b72;
-
-}
-
-/* ========= FOOTER ========= */
+/* ===========================================================
+   RODAPÉ
+=========================================================== */
 
 footer{
 
-padding:60px;
+padding:70px 30px;
 
 text-align:center;
+
+}
+
+.footer-content{
+
+max-width:900px;
+
+margin:auto;
+
+}
+
+.footer-content p{
+
+letter-spacing:5px;
+
+text-transform:uppercase;
+
+font-size:.85rem;
 
 color:#777;
 
 }
 
-/* ========= CELULAR ========= */
+.footer-content span{
+
+display:block;
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:2.3rem;
+
+margin:20px 0;
+
+}
+
+.footer-line{
+
+width:80px;
+
+height:2px;
+
+background:#c8aa72;
+
+margin:25px auto;
+
+}
+
+.footer-content small{
+
+color:#888;
+
+}
+
+/* ===========================================================
+   RESPONSIVO
+=========================================================== */
 
 @media(max-width:900px){
 
-.hero-card{
+.cover{
+
+padding:55px 35px;
+
+}
+
+.cover h1{
+
+font-size:3.3rem;
+
+}
+
+.page-paper{
 
 padding:40px 30px;
 
 }
 
-.hero h1{
+.page-paper h2{
 
-font-size:3rem;
-
-}
-
-.page-content{
-
-padding:35px;
+font-size:2.4rem;
 
 }
 
@@ -360,9 +527,85 @@ grid-template-columns:1fr;
 
 }
 
-.info{
+.info-grid{
 
 grid-template-columns:1fr;
+
+}
+
+#countdown{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.final-card{
+
+padding:50px 30px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.hero{
+
+padding:25px;
+
+}
+
+.cover{
+
+padding:45px 25px;
+
+}
+
+.cover h1{
+
+font-size:2.6rem;
+
+}
+
+.small-title{
+
+letter-spacing:4px;
+
+font-size:.8rem;
+
+}
+
+.hero-text{
+
+font-size:1rem;
+
+}
+
+.page-paper{
+
+padding:30px 22px;
+
+}
+
+.page-number{
+
+font-size:2.8rem;
+
+right:20px;
+
+top:20px;
+
+}
+
+#countdown{
+
+grid-template-columns:1fr;
+
+}
+
+.monogram-final{
+
+font-size:50px;
 
 }
 
