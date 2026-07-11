@@ -1,150 +1,55 @@
-/* ======================================================
-   MANUAL DOS PADRINHOS
-   Adriel & Fernanda
-====================================================== */
+document.addEventListener("DOMContentLoaded", () => {
 
-const loading = document.querySelector(".loading");
+const pages = document.querySelectorAll(".page");
 
-window.addEventListener("load", () => {
+let currentPage = 0;
 
-    setTimeout(() => {
+function showPage(index){
 
-        loading.style.opacity = "0";
+pages.forEach((page,i)=>{
 
-        setTimeout(() => {
-
-            loading.style.display = "none";
-
-        },600);
-
-    },1200);
+page.style.display = i===index ? "block" : "none";
 
 });
 
-/* ======================================================
-   ABRIR MANUAL
-====================================================== */
-
-const openBook = document.getElementById("openBook");
-
-const manual = document.getElementById("manual");
-
-manual.style.display = "none";
-
-openBook.addEventListener("click",()=>{
-
-manual.style.display="block";
-
-manual.scrollIntoView({
-
+window.scrollTo({
+top:0,
 behavior:"smooth"
-
 });
-
-openBook.innerHTML="Manual Aberto";
-
-openBook.disabled=true;
-
-});
-
-/* ======================================================
-   CONTADOR
-====================================================== */
-
-const weddingDate = new Date("2026-12-12T16:30:00");
-
-const days=document.getElementById("days");
-
-const hours=document.getElementById("hours");
-
-const minutes=document.getElementById("minutes");
-
-const seconds=document.getElementById("seconds");
-
-function updateCountdown(){
-
-const now=new Date();
-
-const diff=weddingDate-now;
-
-if(diff<=0){
-
-days.innerHTML="0";
-
-hours.innerHTML="0";
-
-minutes.innerHTML="0";
-
-seconds.innerHTML="0";
-
-return;
 
 }
 
-days.innerHTML=Math.floor(diff/(1000*60*60*24));
+showPage(currentPage);
 
-hours.innerHTML=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+document.querySelectorAll("[data-next]").forEach(button=>{
 
-minutes.innerHTML=Math.floor((diff%(1000*60*60))/(1000*60));
+button.addEventListener("click",()=>{
 
-seconds.innerHTML=Math.floor((diff%(1000*60))/1000);
+if(currentPage < pages.length-1){
 
-}
+currentPage++;
 
-updateCountdown();
-
-setInterval(updateCountdown,1000);
-/* ======================================================
-   ANIMAÇÕES
-====================================================== */
-
-const sections=document.querySelectorAll(".page,.final-message");
-
-const observer=new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.style.opacity="1";
-
-entry.target.style.transform="translateY(0px)";
+showPage(currentPage);
 
 }
 
 });
 
-},{threshold:.15});
-
-sections.forEach(section=>{
-
-section.style.opacity="0";
-
-section.style.transform="translateY(80px)";
-
-section.style.transition="1s";
-
-observer.observe(section);
-
 });
 
-/* ======================================================
-   EFEITO BOTÃO
-====================================================== */
+document.querySelectorAll("[data-prev]").forEach(button=>{
 
-const buttons=document.querySelectorAll("button,.map-button");
+button.addEventListener("click",()=>{
 
-buttons.forEach(btn=>{
+if(currentPage>0){
 
-btn.addEventListener("mouseenter",()=>{
+currentPage--;
 
-btn.style.transform="translateY(-3px)";
+showPage(currentPage);
+
+}
 
 });
-
-btn.addEventListener("mouseleave",()=>{
-
-btn.style.transform="translateY(0px)";
 
 });
 
