@@ -832,3 +832,16 @@ background:#6d7d57;
 .nav-button:hover{
     transform:translateY(-2px);
 }
+
+.book-navigation:has(.nav-button:only-child){
+    justify-content:flex-end;
+}
+
+.book-navigation .back:only-child{
+    margin-right:auto;
+}
+
+.book-navigation{
+    min-height:52px;
+    align-items:center;
+}
