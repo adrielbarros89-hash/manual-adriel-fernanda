@@ -804,3 +804,31 @@ border-radius:50px;
 background:#6d7d57;
 
 }
+
+.page{
+    display:none;
+    animation: fadePage .5s ease;
+}
+
+.page:first-child{
+    display:block;
+}
+
+@keyframes fadePage{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.nav-button{
+    transition:.3s;
+}
+
+.nav-button:hover{
+    transform:translateY(-2px);
+}
