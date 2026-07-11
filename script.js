@@ -1,102 +1,151 @@
-// ==============================
-// ABRIR MANUAL
-// ==============================
+/* ======================================================
+   MANUAL DOS PADRINHOS
+   Adriel & Fernanda
+====================================================== */
 
-const botao = document.getElementById("abrir");
+const loading = document.querySelector(".loading");
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        loading.style.opacity = "0";
+
+        setTimeout(() => {
+
+            loading.style.display = "none";
+
+        },600);
+
+    },1200);
+
+});
+
+/* ======================================================
+   ABRIR MANUAL
+====================================================== */
+
+const openBook = document.getElementById("openBook");
+
 const manual = document.getElementById("manual");
 
 manual.style.display = "none";
 
-botao.addEventListener("click", () => {
+openBook.addEventListener("click",()=>{
 
-    manual.style.display = "block";
+manual.style.display="block";
 
-    manual.scrollIntoView({
-        behavior: "smooth"
-    });
+manual.scrollIntoView({
 
-    botao.innerHTML = "Manual Aberto";
-
-    botao.disabled = true;
+behavior:"smooth"
 
 });
 
-// ==============================
-// CONTADOR REGRESSIVO
-// ==============================
+openBook.innerHTML="Manual Aberto";
 
-const contador = document.getElementById("contador");
+openBook.disabled=true;
 
-const destino = new Date("December 12, 2026 00:00:00").getTime();
+});
 
-function atualizarContador(){
+/* ======================================================
+   CONTADOR
+====================================================== */
 
-    const agora = new Date().getTime();
+const weddingDate = new Date("2026-12-12T16:30:00");
 
-    const distancia = destino - agora;
+const days=document.getElementById("days");
 
-    if(distancia <= 0){
+const hours=document.getElementById("hours");
 
-        contador.innerHTML = "Chegou o grande dia! ❤️";
+const minutes=document.getElementById("minutes");
 
-        return;
+const seconds=document.getElementById("seconds");
 
-    }
+function updateCountdown(){
 
-    const dias = Math.floor(distancia / (1000*60*60*24));
+const now=new Date();
 
-    const horas = Math.floor((distancia % (1000*60*60*24))/(1000*60*60));
+const diff=weddingDate-now;
 
-    const minutos = Math.floor((distancia % (1000*60*60))/(1000*60));
+if(diff<=0){
 
-    const segundos = Math.floor((distancia % (1000*60))/1000);
+days.innerHTML="0";
 
-    contador.innerHTML =
+hours.innerHTML="0";
 
-    dias + " dias<br>" +
+minutes.innerHTML="0";
 
-    horas + " horas<br>" +
+seconds.innerHTML="0";
 
-    minutos + " minutos<br>" +
-
-    segundos + " segundos";
+return;
 
 }
 
-setInterval(atualizarContador,1000);
+days.innerHTML=Math.floor(diff/(1000*60*60*24));
 
-atualizarContador();
+hours.innerHTML=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
 
-// ==============================
-// ANIMAÇÃO DAS PÁGINAS
-// ==============================
+minutes.innerHTML=Math.floor((diff%(1000*60*60))/(1000*60));
 
-const paginas = document.querySelectorAll(".page");
+seconds.innerHTML=Math.floor((diff%(1000*60))/1000);
 
-const observer = new IntersectionObserver((entries)=>{
+}
 
-    entries.forEach(entry=>{
+updateCountdown();
 
-        if(entry.isIntersecting){
+setInterval(updateCountdown,1000);
+/* ======================================================
+   ANIMAÇÕES
+====================================================== */
 
-            entry.target.style.opacity="1";
+const sections=document.querySelectorAll(".page,.final-message");
 
-            entry.target.style.transform="translateY(0px)";
+const observer=new IntersectionObserver((entries)=>{
 
-        }
+entries.forEach(entry=>{
 
-    });
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0px)";
+
+}
 
 });
 
-paginas.forEach(pagina=>{
+},{threshold:.15});
 
-    pagina.style.opacity="0";
+sections.forEach(section=>{
 
-    pagina.style.transform="translateY(80px)";
+section.style.opacity="0";
 
-    pagina.style.transition="1s";
+section.style.transform="translateY(80px)";
 
-    observer.observe(pagina);
+section.style.transition="1s";
+
+observer.observe(section);
+
+});
+
+/* ======================================================
+   EFEITO BOTÃO
+====================================================== */
+
+const buttons=document.querySelectorAll("button,.map-button");
+
+buttons.forEach(btn=>{
+
+btn.addEventListener("mouseenter",()=>{
+
+btn.style.transform="translateY(-3px)";
+
+});
+
+btn.addEventListener("mouseleave",()=>{
+
+btn.style.transform="translateY(0px)";
+
+});
 
 });
